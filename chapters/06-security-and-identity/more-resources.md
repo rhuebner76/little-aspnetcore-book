@@ -2,7 +2,7 @@
 
 ASP.NET Core Identity helps you add security and identity features like login and registration to your application. The `dotnet new` templates give you pre-built views and controllers that handle these common scenarios so you can get up and running quickly.
 
-There's much more that ASP.NET Core Identity can do, such as password reset and social login. The documentation available at http://docs.asp.net is a fantastic resource for learning how to add these features.
+There's much more that ASP.NET Core Identity can do, such as password reset and social login. The documentation available at https://docs.asp.net is a fantastic resource for learning how to add these features.
 
 ### Alternatives to ASP.NET Core Identity
 

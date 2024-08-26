@@ -39,7 +39,9 @@ Open your web browser and navigate to `http://localhost:5000`. You'll see the de
 ### The parts of an ASP.NET Core project
 The `dotnet new mvc` template generates a number of files and directories for you. Here are the most important things you get out of the box:
 
-* The **Program.cs** and **Startup.cs** files set up the web server and ASP.NET Core pipeline. The `Startup` class is where you can add middleware that handles and modifies incoming requests, and serves things like static content or error pages. It's also where you add your own services to the dependency injection container (more on this later).
+* In older versions of dotnet core, the **Program.cs** and **Startup.cs** files set up the web server and ASP.NET Core pipeline. The `Startup` class was where middleware was added that handles and modifies incoming requests, and serves things like static content or error pages. It's also where you add your own services to the dependency injection container (more on this later).
+  
+* In current versions of dotnet (version 6+), new project templates create only **Program.cs** file using top-level statements combining the previous **Program.cs** and **Startup.cs** files. This new configuration is still where middleware registration, configuration, and dependency injection is handled.
 
 * The **Models**, **Views**, and **Controllers** directories contain the components of the Model-View-Controller (MVC) architecture. You'll explore all three in the next chapter.
 
@@ -76,4 +78,12 @@ git init
 
 Make sure you add a `.gitignore` file that ignores the `bin` and `obj` directories. The Visual Studio template on GitHub's gitignore template repo (https://github.com/github/gitignore) works great.
 
-There's plenty more to explore, so let's dive in and start building an application!
+For a dotnet projects we can generate a `.gitignore` using `dotnet new` in the project root directory:
+
+```
+dotnet new gitignore
+```
+
+Do not forget to commit frequently, push often.
+
+There's plenty more to explore, so let's dive in and start building a web application!

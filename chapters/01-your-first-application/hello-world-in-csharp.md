@@ -10,25 +10,25 @@ cd Documents
 Use the `dotnet` command to create a new project:
 
 ```
-dotnet new console -o CsharpHelloWorld
+dotnet new console -o CSharpHelloWorld
 ```
 
-The `dotnet new` command creates a new .NET project in C# by default. The `console` parameter selects a template for a console application (a program that outputs text to the screen). The `-o CsharpHelloWorld` parameter tells `dotnet new` to create a new directory called `CsharpHelloWorld` for all the project files. Move into this new directory:
+The `dotnet new` command creates a new .NET project in C# by default. The `console` parameter selects a template for a console application (a program that outputs text to the screen). The `-o CSharpHelloWorld` parameter tells `dotnet new` to create a new directory called `CSharpHelloWorld` for all the project files. Move into this new directory:
 
 ```
-cd CsharpHelloWorld
+cd CSharpHelloWorld
 ```
 
 `dotnet new console` creates a basic C# program that writes the text `Hello World!` to the screen. The program is comprised of two files: a project file (with a `.csproj` extension) and a C# code file (with a `.cs` extension). If you open the former in a text or code editor, you'll see this:
 
-**CsharpHelloWorld.csproj**
+**CSharpHelloWorld.csproj**
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>net8</TargetFramework>
   </PropertyGroup>
 
 </Project>
@@ -41,7 +41,7 @@ The project file is XML-based and defines some metadata about the project. Later
 ```csharp
 using System;
 
-namespace CsharpHelloWorld
+namespace CSharpHelloWorld
 {
     class Program
     {

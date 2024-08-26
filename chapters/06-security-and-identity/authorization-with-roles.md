@@ -25,11 +25,11 @@ namespace AspNetCoreTodo.Controllers
     [Authorize(Roles = "Administrator")]
     public class ManageUsersController : Controller
     {
-        private readonly UserManager<ApplicationUser>
+        private readonly UserManager<IdentityUser>
             _userManager;
         
         public ManageUsersController(
-            UserManager<ApplicationUser> userManager)
+            UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
         }
@@ -68,9 +68,9 @@ namespace AspNetCoreTodo.Models
 {
     public class ManageUsersViewModel
     {
-        public ApplicationUser[] Administrators { get; set; }
+        public IdentityUser[] Administrators { get; set; }
 
-        public ApplicationUser[] Everyone { get; set;}
+        public IdentityUser[] Everyone { get; set;}
     }
 }
 ```
@@ -165,7 +165,7 @@ namespace AspNetCoreTodo
             await EnsureRolesAsync(roleManager);
 
             var userManager = services
-                .GetRequiredService<UserManager<ApplicationUser>>();
+                .GetRequiredService<UserManager<IdentityUser>>();
             await EnsureTestAdminAsync(userManager);
         }
     }
@@ -213,7 +213,7 @@ Next, write the `EnsureTestAdminAsync()` method:
 
 ```csharp
 private static async Task EnsureTestAdminAsync(
-    UserManager<ApplicationUser> userManager)
+    UserManager<IdentityUser> userManager)
 {
     var testAdmin = await userManager.Users
         .Where(x => x.UserName == "admin@todo.local")
@@ -221,7 +221,7 @@ private static async Task EnsureTestAdminAsync(
 
     if (testAdmin != null) return;
 
-    testAdmin = new ApplicationUser
+    testAdmin = new IdentityUser
     {
         UserName = "admin@todo.local",
         Email = "admin@todo.local"
@@ -297,8 +297,8 @@ You can inject the `UserManager` directly into a view to do these types of autho
 @using Microsoft.AspNetCore.Identity
 @using AspNetCoreTodo.Models
 
-@inject SignInManager<ApplicationUser> signInManager
-@inject UserManager<ApplicationUser> userManager
+@inject SignInManager<IdentityUser> signInManager
+@inject UserManager<IdentityUser> userManager
 
 @if (signInManager.IsSignedIn(User))
 {
@@ -336,8 +336,8 @@ To include this partial in the main layout, edit `_Layout.cshtml` and add it in 
     <ul class="nav navbar-nav">
         <!-- existing code here -->
     </ul>
-    @await Html.PartialAsync("_LoginPartial")
-    @await Html.PartialAsync("_AdminActionsPartial")
+    <partial name="_LoginPartial" />
+    <partial name="_AdminActionsPartial" />
 </div>
 ```
 

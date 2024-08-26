@@ -20,7 +20,7 @@ The `Views/Todo/Index.cshtml` view has a placeholder for the Add Item form:
 </div>
 ```
 
-To keep things separate and organized, you'll create the form as a **partial view**. A partial view is a small piece of a larger view that lives in a separate file.
+To keep things separate and organized, you'll create the form as a **partial view**. A partial view is a small, reusable piece of a larger view that lives in a separate file.
 
 Create an `AddItemPartial.cshtml` view:
 
@@ -50,7 +50,7 @@ That takes care of creating the partial view. Now, reference it from the main To
 
 ```html
 <div class="panel-footer add-item-form">
-  @await Html.PartialAsync("AddItemPartial", new TodoItem())
+  <partial name="AddItemPartial" />
 </div>
 ```
 

@@ -66,22 +66,34 @@ public async Task<IActionResult> Index()
 
 You're almost there! You've made the `TodoController` depend on the `ITodoItemService` interface, but you haven't yet told ASP.NET Core that you want the `FakeTodoItemService` to be the actual service that's used under the hood. It might seem obvious right now since you only have one class that implements `ITodoItemService`, but later you'll have multiple classes that implement the same interface, so being explicit is necessary.
 
-Declaring (or "wiring up") which concrete class to use for each interface is done in the `ConfigureServices` method of the `Startup` class. Right now, it looks something like this:
+Declaring (or "wiring up") which concrete class to use for each interface is done in the first part of the `Program` class. Right now, it looks something like this:
 
-**Startup.cs**
+**Program.cs**
 
 ```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    // (... some code)
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using AspNetCoreTodo.Data;
 
-    services.AddMvc();
-}
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(connectionString));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+// ... more code
 ```
 
-The job of the `ConfigureServices` method is adding things to the **service container**, or the collection of services that ASP.NET Core knows about. The `services.AddMvc` line adds the services that the internal ASP.NET Core systems need (as an experiment, try commenting out this line). Any other services you want to use in your application must be added to the service container here in `ConfigureServices`.
+The job of the builder is to define the web application by adding things to the `builder.Services` **service container**, or the collection of services that ASP.NET Core knows about. The `builder.Services.AddContollersWithViews();` line adds the services that the internal ASP.NET Core systems need (as an experiment, try commenting out this line) for using the **MVC** patter. Any other services you want to use in your application must be added to the service container here before `var app = builder.Build();`.
 
-Add the following line anywhere inside the `ConfigureServices` method:
+Add the following line before the `var app = builder.Build();` call:
 
 ```csharp
 services.AddSingleton<ITodoItemService, FakeTodoItemService>();
