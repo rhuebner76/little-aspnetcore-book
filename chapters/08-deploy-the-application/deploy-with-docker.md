@@ -17,10 +17,10 @@ The first thing you'll need is a Dockerfile, which is like a recipe that tells D
 Create a file called `Dockerfile` (no extension) in the root, top-level `AspNetCoreTodo` folder. Open it in your favorite editor. Write the following line:
 
 ```dockerfile
-FROM microsoft/dotnet:2.0-sdk AS build
+FROM microsoft/dotnet:8.0-sdk AS build
 ```
 
-This tells Docker to use the `microsoft/dotnet:2.0-sdk` image as a starting point. This image is published by Microsoft and contains the tools and dependencies you need to execute `dotnet build` and compile your application. By using this pre-built image as a starting point, Docker can optimize the image produced for your app and keep it small.
+This tells Docker to use the `microsoft/dotnet:8.0-sdk` image as a starting point. This image is published by Microsoft and contains the tools and dependencies you need to execute `dotnet build` and compile your application. By using this pre-built image as a starting point, Docker can optimize the image produced for your app and keep it small.
 
 Next, add this line:
 
@@ -51,7 +51,7 @@ The `dotnet publish` command compiles the project, and the `-o out` flag puts th
 These compiled files will be used to run the application with the final few commands:
 
 ```dockerfile
-FROM microsoft/dotnet:2.0-runtime AS runtime
+FROM microsoft/dotnet:8.0-runtime AS runtime
 ENV ASPNETCORE_URLS http://+:80
 WORKDIR /app
 COPY --from=build /app/AspNetCoreTodo/out ./
@@ -67,7 +67,7 @@ The full Dockerfile looks like this:
 **Dockerfile**
 
 ```dockerfile
-FROM microsoft/dotnet:2.0-sdk AS build
+FROM microsoft/dotnet:8.0-sdk AS build
 COPY AspNetCoreTodo/*.csproj ./app/AspNetCoreTodo/
 WORKDIR /app/AspNetCoreTodo
 RUN dotnet restore
@@ -75,7 +75,7 @@ RUN dotnet restore
 COPY AspNetCoreTodo/. ./
 RUN dotnet publish -o out /p:PublishWithAspNetCoreTargetManifest="false"
 
-FROM microsoft/dotnet:2.0-runtime AS runtime
+FROM microsoft/dotnet:8.0-runtime AS runtime
 ENV ASPNETCORE_URLS http://+:80
 WORKDIR /app
 COPY --from=build /app/AspNetCoreTodo/out ./

@@ -11,7 +11,7 @@ Released under the Creative Commons Attribution 4.0 license. You are free to sha
 For more information, visit https://creativecommons.org/licenses/by/4.0/
 
 ## Introduction
-Thanks for picking up The Little ASP.NET Core Book! I wrote this short book to help developers and people interested in web programming learn about ASP.NET Core 2.0, a framework for building web applications and APIs.
+Thanks for picking up The Little ASP.NET Core Book! I wrote this short book to help developers and people interested in web programming learn about ASP.NET Core, a framework for building web applications and APIs.
 
 The Little ASP.NET Core Book is structured as a tutorial. You'll build an application from start to finish and learn:
 
@@ -71,7 +71,7 @@ Throughout this book, you'll be learning about ASP.NET Core (the web framework).
 
 You may also hear about .NET Core and .NET Standard. The naming gets confusing, so here's a simple explanation:
 
-**.NET Standard** is a platform-agnostic interface that defines features and APIs. It's important to note that .NET Standard doesn't represent any actual code or functionality, just the API definition. There are different "versions" or levels of .NET Standard that reflect how many APIs are available (or how wide the API surface area is). For example, .NET Standard 2.0 has more APIs available than .NET Standard 1.5, which has more APIs than .NET Standard 1.0.
+**.NET Standard** is a platform-agnostic interface that defines features and APIs. It's important to note that .NET Standard doesn't represent any actual code or functionality, just the API definition. There are different "versions" or levels of .NET Standard that reflect how many APIs are available (or how wide the API surface area is).
 
 **.NET Core** is the .NET runtime that can be installed on Windows, Mac, or Linux. It implements the APIs defined in the .NET Standard interface with the appropriate platform-specific code on each operating system. This is what you'll install on your own machine to build and run ASP.NET Core applications.
 
