@@ -1,7 +1,8 @@
 ## Create a migration
 
-{% hint style="info" %} **Important** {% endhint %}
+{% hint style="info" %} #### Important
 To work with the database using the CLI it may be necessary to install or update the `dotnet ef` toolchain may be needed. See documentation reference [.NET Core EF CLI](https://learn.microsoft.com/en-us/ef/core/cli/dotnet) for instructions and details on how to setup the tool.
+{% endhint %}
 
 Migrations keep track of changes to the database structure over time. They make it possible to undo (roll back) a set of changes, or create a second database with the same structure as the first. With migrations, you have a full history of modifications like adding or removing columns (and entire tables).
 

@@ -43,9 +43,9 @@ Then, update the line that writes the `DueAt` property to use Humanizer's `Human
 <td>@item.DueAt.Humanize()</td>
 ```
 
-{% hint style="warning" %} **Warning** {% endhint %}
+{% hint style="warning" %} #### Warning
 `DueAt` is a **nullable** `ValueType`, so what happens here if the value of the property is null?
-
+{% endhint %}
 
 Now the dates are much more readable:
 
