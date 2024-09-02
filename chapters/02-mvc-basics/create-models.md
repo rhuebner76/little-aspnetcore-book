@@ -35,13 +35,17 @@ This class defines what the database will need to store for each to-do item: an 
 
     > Normally, strings in C# are always nullable, so there's no need to mark the Title property as nullable. C# strings can be null, empty, or contain text.
 
-    {% hint style="info" %} **Note** {% endhint %}
+    {% hint style="info" %} #### Note
     > Starting with .net6 a `ReferenceType` is annotated with a **nullable** or **non-nullable** reference symbol `?`. See [Nullable Reference](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types) for a more detailed explanation. In the model above **Title** is a reference type of string and marked with the **nullable** to denote that it **should** never be null.
-
+    {% endhint %}
+    
 * The **DueAt** property is a `DateTimeOffset`, which is a C# type that stores a date/time stamp along with a timezone offset from UTC. Storing the date, time, and timezone offset together makes it easy to render dates accurately on systems in different timezones.
 
-    {% hint style="info" %} **Note** {% endhint %}
+    {% hint style="info" %} #### Note
+    
     > Notice the `?` question mark after the `DateTimeOffset` type? That marks the `ValueType` of DueAt property as **nullable**, or optional. This is slightly different than the **nullable** annotation for a `ReferenceType` used above.  See [Nullable Reference](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types) for a more detailed explanation. If the `?` wasn't included, every to-do item would be requred and always have a value (or a default value). The `Id` and `IsDone` properties aren't marked as nullable, so they are required and will always have a value (or a default value).
+    
+    {% endhint %}
 
 Each property is followed by `get; set;`, which is a shorthand way of saying the property is read/write (or, more technically, it has a getter and setter methods).
 
