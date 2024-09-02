@@ -6,7 +6,7 @@ There's not a whole lot going on in the database context yet:
 
 ```csharp
 public class ApplicationDbContext 
-             : IdentityDbContext<ApplicationUser>
+             : IdentityDbContext
 {
     public ApplicationDbContext(
         DbContextOptions<ApplicationDbContext> options)

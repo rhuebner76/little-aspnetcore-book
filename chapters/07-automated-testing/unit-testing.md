@@ -49,7 +49,7 @@ Take a look at the logic in the `AddItemAsync()` method of the `TodoItemService`
 
 ```csharp
 public async Task<bool> AddItemAsync(
-    TodoItem newItem, ApplicationUser user)
+    TodoItem newItem, IdentityUser user)
 {
     newItem.Id = Guid.NewGuid();
     newItem.IsDone = false;
@@ -117,7 +117,7 @@ using (var context = new ApplicationDbContext(options))
 {
     var service = new TodoItemService(context);
 
-    var fakeUser = new ApplicationUser
+    var fakeUser = new IdentityUser
     {
         Id = "fake-000",
         UserName = "fake@example.com"

@@ -51,7 +51,7 @@ The full, detailed changelog is always available here:
 
 https://github.com/rhuebner76/little-aspnetcore-book/releases
 
-**2.0.0** (2024-09-01): Updated for dotnet 8.0. Added ApplicationUser model and explaination.
+**2.0.0** (2024-09-01): Updated for dotnet 8.0. Added IdentityUser model and explaination.
 
 
 https://github.com/nbarbettini/little-aspnetcore-book/releases

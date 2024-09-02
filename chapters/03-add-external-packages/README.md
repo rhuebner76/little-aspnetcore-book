@@ -43,6 +43,10 @@ Then, update the line that writes the `DueAt` property to use Humanizer's `Human
 <td>@item.DueAt.Humanize()</td>
 ```
 
+>[!WARNING]
+`DueAt` is a **nullable** `ValueType`, so what happens here if the value of the property is null?
+
+
 Now the dates are much more readable:
 
 ![Human-readable dates](friendly-dates.png)
