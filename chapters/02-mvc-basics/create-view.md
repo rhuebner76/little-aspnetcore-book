@@ -28,7 +28,7 @@ Create a `Todo` directory inside the `Views` directory, and add this file:
           </tr>
       </thead>
       
-      @foreach (var item in Model.Items)
+      @foreach (var item in (Model.Items ?? Array.Empty<TodoItem>()))
       {
           <tr>
               <td>
@@ -49,6 +49,10 @@ Create a `Todo` directory inside the `Views` directory, and add this file:
 At the very top of the file, the `@model` directive tells Razor which model to expect this view to be bound to. The model is accessed through the `Model` property.
 
 Assuming there are any to-do items in `Model.Items`, the `foreach` statement will loop over each to-do item and render a table row (`<tr>` element) containing the item's name and due date. A checkbox is also rendered that will let the user mark the item as complete.
+
+> [!IMPORTANT]
+> The symbol `??` is the coalesce operator, since we marked the `TodoViewModel` class `Items` property as **nullable** the compiler will output `warning CS8602: Dereference of a possibly null reference.` warning that there could be a `RuntimeException` if we do not handle the possiblity that `Items` will be null.
+
 
 ### The layout file
 You might be wondering where the rest of the HTML is: what about the `<body>` tag, or the header and footer of the page? ASP.NET Core uses a layout view that defines the base structure that every other view is rendered inside of. It's stored in `Views/Shared/_Layout.cshtml`.

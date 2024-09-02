@@ -96,7 +96,7 @@ The job of the builder is to define the web application by adding things to the 
 Add the following line before the `var app = builder.Build();` call:
 
 ```csharp
-services.AddSingleton<ITodoItemService, FakeTodoItemService>();
+builder.Services.AddSingleton<ITodoItemService, FakeTodoItemService>();
 ```
 
 This line tells ASP.NET Core to use the `FakeTodoItemService` whenever the `ITodoItemService` interface is requested in a constructor (or anywhere else).

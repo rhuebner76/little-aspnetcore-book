@@ -1,10 +1,20 @@
 # The Little ASP.NET Core Book
 
+Original
+
 *by Nate Barbettini*
 
 Copyright &copy; 2018. All rights reserved.
 
 ISBN: 978-1-387-75615-5
+
+
+Revision
+
+*by Russ Huebner*
+
+Copyright &copy; 2024. All rights reserved.
+
 
 Released under the Creative Commons Attribution 4.0 license. You are free to share, copy, and redistribute this book in any format, or remix and transform it for any purpose (even commercially). You must give appropriate credit and provide a link to the license.
 
@@ -28,20 +38,11 @@ Don't worry, you don't need to know anything about ASP.NET Core (or any of the a
 
 The code for the finished version of the application you'll build is available on GitHub:
 
-https://www.github.com/nbarbettini/little-aspnetcore-todo
+https://github.com/rhuebner76/little-aspnetcore-app
 
 Feel free to download it if you want to see the finished product, or compare as you write your own code.
 
-The book itself is updated frequently with bug fixes and new content. If you're reading a PDF, e-book, or print version, check the official website ([littleasp.net/book](http://www.littleasp.net/book)) to see if there's an updated version available. The very last page of the book contains version information and a changelog.
-
-### Reading in your own language
-
-Thanks to some fantastic multilingual contributors, the Little ASP.NET Core Book has been translated into other languages:
-
-* [**ASP.NET Core El Kitabı**](https://sahinyanlik.gitbooks.io/kisa-asp-net-core-kitabi/) (Turkish)
- 	 
-* [**简明 ASP.NET Core 手册**](https://windsting.github.io/little-aspnetcore-book/book/) (Chinese)
-
+The book itself is updated frequently with bug fixes and new content. If you're reading a PDF, e-book, or print version, check [GitHub](https://github.com/rhuebner76/little-aspnetcore-book) to see if there's an updated version available. The very last page of the book contains version information and a changelog.
 
 ## Who this book is for
 If you're new to programming, this book will introduce you to the patterns and concepts used to build modern web applications. You'll learn how to build a web app (and how the big pieces fit together) by building something from scratch! While this little book won't be able to cover absolutely everything you need to know about programming, it'll give you a starting point so you can learn more advanced topics.
@@ -85,5 +86,7 @@ If you haven't used a previous version of ASP.NET, skip ahead to the next chapte
 ASP.NET Core is a complete ground-up rewrite of ASP.NET, with a focus on modernizing the framework and finally decoupling it from System.Web, IIS, and Windows. If you remember all the OWIN/Katana stuff from ASP.NET 4, you're already halfway there: the Katana project became ASP.NET 5 which was ultimately renamed to ASP.NET Core.
 
 Because of the Katana legacy, the `Startup` or `Program` class is front and center, and there's no more `Application_Start` or `Global.asax`. The entire pipeline is driven by middleware, and there's no longer a split between MVC and Web API: controllers can simply return views, status codes, or data. Dependency injection comes baked in, so you don't need to install and configure a container like StructureMap or Ninject if you don't want to. And the entire framework has been optimized for speed and runtime efficiency.
+
+Note: Outside of learning how things where setup prior to net6.0, starting with net6.0, templates for new projects use [top-level statements](https://learn.microsoft.com/en-us/dotnet/csharp/tutorials/top-level-statements) meaning that only single `Program` class to bootstap the application will be created without a `Startup.cs` class. While it is possible to refactor and re-introduce the `Startup` and `Program` classes we will not be doing that here.
 
 Alright, enough introduction. Let's dive in to ASP.NET Core!
