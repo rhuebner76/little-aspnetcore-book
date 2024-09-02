@@ -83,7 +83,7 @@ Notice how the new `AddItem` action accepts a `TodoItem` parameter? This is the 
 
 Model binding looks at the data in a request and tries to intelligently match the incoming fields with properties on the model. In other words, when the user submits this form and their browser POSTs to this action, ASP.NET Core will grab the information from the form and place it in the `newItem` variable.
 
-{% hint style="danger" %} Important {% endhint %}
+{% hint style="danger" %} Important - Address Security Concern {% endhint %}
 
 The `[ValidateAntiForgeryToken]` attribute before the action tells ASP.NET Core that it should look for (and verify) the hidden verification token that was added to the form by the `asp-action` tag helper. This is an important security measure to prevent cross-site request forgery (CSRF) attacks, where your users could be tricked into submitting data from a malicious site. The verification token ensures that your application is actually the one that rendered and submitted the form.
 
