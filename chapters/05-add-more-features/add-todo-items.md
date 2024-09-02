@@ -50,7 +50,7 @@ That takes care of creating the partial view. Now, reference it from the main To
 
 ```html
 <div class="panel-footer add-item-form">
-  <partial name="AddItemPartial" />
+  @await Html.PartialAsync("AddItemPartial", new TodoItem())
 </div>
 ```
 
@@ -83,7 +83,8 @@ Notice how the new `AddItem` action accepts a `TodoItem` parameter? This is the 
 
 Model binding looks at the data in a request and tries to intelligently match the incoming fields with properties on the model. In other words, when the user submits this form and their browser POSTs to this action, ASP.NET Core will grab the information from the form and place it in the `newItem` variable.
 
-{% hint style="danger" %} **Important** {% endhint %}
+{% hint style="danger" %} Important {% endhint %}
+
 The `[ValidateAntiForgeryToken]` attribute before the action tells ASP.NET Core that it should look for (and verify) the hidden verification token that was added to the form by the `asp-action` tag helper. This is an important security measure to prevent cross-site request forgery (CSRF) attacks, where your users could be tricked into submitting data from a malicious site. The verification token ensures that your application is actually the one that rendered and submitted the form.
 
 Take a look at the `AddItemPartial.cshtml` view once more. The `@model TodoItem` line at the top of the file tells ASP.NET Core that the view should expect to be paired with the `TodoItem` model. This makes it possible to use `asp-for="Title"` on the `<input>` tag to let ASP.NET Core know that this input element is for the `Title` property.

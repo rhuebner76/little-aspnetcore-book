@@ -122,7 +122,8 @@ git add .
 git commit -m "initial commit"
 ```
 
-{% hint style="info" %} **Important** {% endhint %}
+{% hint style="info" %} #### Important
 > **Remember to commit frequently, push often.**
+{% endhint %}
 
 There's plenty more to explore, so let's dive in and start building a web application!
