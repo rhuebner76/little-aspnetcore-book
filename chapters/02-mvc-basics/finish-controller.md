@@ -27,7 +27,7 @@ using AspNetCoreTodo.Models;
 If you're using Visual Studio or Visual Studio Code, the editor will suggest these `using` statements when you put your cursor on a red squiggly line.
 
 ## Test it out
->[!IMPORTANT]
+{% hint style="info" %} **Important** {% endhint %}
 Remember to save all the changes before running!
 
 To start the application, press F5 (if you're using Visual Studio or Visual Studio Code), or just type `dotnet run` in the terminal. If the code compiles without errors, the server will start up on port 5000 by default.

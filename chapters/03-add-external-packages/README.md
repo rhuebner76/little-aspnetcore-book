@@ -43,7 +43,7 @@ Then, update the line that writes the `DueAt` property to use Humanizer's `Human
 <td>@item.DueAt.Humanize()</td>
 ```
 
->[!WARNING]
+{% hint style="warning" %} **Warning** {% endhint %}
 `DueAt` is a **nullable** `ValueType`, so what happens here if the value of the property is null?
 
 

@@ -71,7 +71,7 @@ public async Task<TodoItem[]> GetIncompleteItemsAsync()
 Because you deleted the `FakeTodoItemService` class, you'll need to update the line in `ConfigureServices` that is wiring up the `ITodoItemService` interface:
 
 ```csharp
-services.AddScoped<ITodoItemService, TodoItemService>();
+builder.Services.AddScoped<ITodoItemService, TodoItemService>();
 ```
 
 `AddScoped` adds your service to the service container using the **scoped** lifecycle. This means that a new instance of the `TodoItemService` class will be created during each web request. This is required for service classes that interact with a database.
