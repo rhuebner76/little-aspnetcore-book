@@ -21,11 +21,12 @@
 * [Add more features](chapters/05-add-more-features/README.md)
     * [Add new to-do items](chapters/05-add-more-features/add-todo-items.md)
     * [Complete items with a checkbox](chapters/05-add-more-features/complete-with-checkbox.md)
-<!-- * [Security and identity](chapters/06-security-and-identity/README.md)
+* [Security and identity](chapters/06-security-and-identity/README.md)
     * [Require authentication](chapters/06-security-and-identity/require-authentication.md)
     * [Using identity in the application](chapters/06-security-and-identity/using-identity-in-the-application.md)
     * [Authorization with roles](chapters/06-security-and-identity/authorization-with-roles.md)
     * [More resources](chapters/06-security-and-identity/more-resources.md)
+<!-- 
 * [Automated testing](chapters/07-automated-testing/README.md)
     * [Unit testing](chapters/07-automated-testing/unit-testing.md)
     * [Integration testing](chapters/07-automated-testing/integration-testing.md)
