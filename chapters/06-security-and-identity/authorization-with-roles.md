@@ -235,25 +235,26 @@ private static async Task EnsureTestAdminAsync(
 
 If there isn't already a user with the username `admin@todo.local` in the database, this method will create one and assign a temporary password. After you log in for the first time, you should change the account's password to something secure!
 
-Next, you need to tell your application to run this logic when it starts up. Modify `Program.cs` and update `Main()` to call a new method, `InitializeDatabase()`:
+Next, you need to tell your application to run this logic when it starts up. Modify `Program.cs` and update `the startup` to call a new method, `InitializeDatabase()` before the app host starts running:
 
 **Program.cs**
 
 ```csharp
-public static void Main(string[] args)
-{
-    var host = BuildWebHost(args);
-    InitializeDatabase(host);
-    host.Run();
-}
+// .. 
+app.MapRazorPages();
+
+// initialize database BEFORE app starts running
+InitializeDatabase(app);
+
+app.Run();
 ```
 
-Then, add the new method to the class below `Main()`:
+Then, add the new method to the class below `app.Run();`:
 
 ```csharp
-private static void InitializeDatabase(IWebHost host)
+static void InitializeDatabase(WebApplication app)
 {
-    using (var scope = host.Services.CreateScope())
+    using (var scope = app.Services.CreateScope())
     {
         var services = scope.ServiceProvider;
 
