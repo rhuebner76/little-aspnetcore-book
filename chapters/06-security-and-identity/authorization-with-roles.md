@@ -2,6 +2,33 @@
 
 Roles are a common approach to handling authorization and permissions in a web application. For example, it's common to create an Administrator role that gives admin users more permissions or power than normal users.
 
+In order to enable role base authorization we will need to register the associated services in the startup by adding `.AddRoles<IdentityRole>()` to the Identity service registration. Without this we will not be able to use the RoleManager later on.
+
+**Program.cs**
+
+```csharp
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using AspNetCoreTodo.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(connectionString));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+// ... more code
+```
+
+
 In this project, you'll add a Manage Users page that only administrators can see. If normal users try to access it, they'll see an error.
 
 ### Add a Manage Users page
@@ -225,6 +252,7 @@ private static async Task EnsureTestAdminAsync(
     {
         UserName = "admin@todo.local",
         Email = "admin@todo.local"
+        EmailConfirmed = true,
     };
     await userManager.CreateAsync(
         testAdmin, "NotSecure123!!");
