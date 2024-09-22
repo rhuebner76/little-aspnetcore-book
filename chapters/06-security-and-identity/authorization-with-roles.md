@@ -280,7 +280,7 @@ app.Run();
 Then, add the new method to the class below `app.Run();`:
 
 ```csharp
-static void InitializeDatabase(WebApplication app)
+void InitializeDatabase(WebApplication app)
 {
     using (var scope = app.Services.CreateScope())
     {

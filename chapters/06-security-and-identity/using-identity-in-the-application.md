@@ -96,7 +96,7 @@ You'll need to add a new property to the `TodoItem` entity model so each item ca
 **Models/TodoItem.cs**
 
 ```csharp
-public string UserId { get; set; }
+public string? UserId { get; set; }
 ```
 
 Since you updated the entity model used by the database context, you also need to migrate the database. Create a new migration using `dotnet ef` in the terminal:
