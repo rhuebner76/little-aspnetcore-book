@@ -40,11 +40,11 @@ This class defines what the database will need to store for each to-do item: an 
     {% endhint %}
     
 * The **DueAt** property is a `DateTimeOffset`, which is a C# type that stores a date/time stamp along with a timezone offset from UTC. Storing the date, time, and timezone offset together makes it easy to render dates accurately on systems in different timezones.
-
+  
+    > In .net a `ValueType` is a structure and not considered nullable, yet it can be annotated as **nullable** using the reference symbol `?`. See [Nullable Value](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types) for a more detailed explanation.
+    
     {% hint style="info" %} #### Note
-    
-    > Notice the `?` question mark after the `DateTimeOffset` type? That marks the `ValueType` of DueAt property as **nullable**, or optional. This is slightly different than the **nullable** annotation for a `ReferenceType` used above.  See [Nullable Reference](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-value-types) for a more detailed explanation. If the `?` wasn't included, every to-do item would be requred and always have a value (or a default value). The `Id` and `IsDone` properties aren't marked as nullable, so they are required and will always have a value (or a default value).
-    
+    > Notice the `?` question mark after the `DateTimeOffset` type? That marks the `ValueType` of DueAt property as **nullable**, or optional. This is slightly different than the **nullable** annotation for a `ReferenceType` used above.  If the `?` wasn't included, every to-do item would be requred and always have a value (or a default value). The `Id` and `IsDone` properties aren't marked as nullable, so they are required and will always have a value (or a default value).    
     {% endhint %}
 
 Each property is followed by `get; set;`, which is a shorthand way of saying the property is read/write (or, more technically, it has a getter and setter methods).
