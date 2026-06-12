@@ -1,8 +1,8 @@
-## Add new to-do items
+# Add new to-do items
 
 The user will add new to-do items with a simple form below the list:
 
-![Final form](final-form.png)
+![Final form](../../.gitbook/assets/final-form.png)
 
 Adding this feature requires a few steps:
 
@@ -10,7 +10,7 @@ Adding this feature requires a few steps:
 * Creating a new action on the controller to handle the form
 * Adding code to the service layer to update the database
 
-### Add a form
+## Add a form
 
 The `Views/Todo/Index.cshtml` view has a placeholder for the Add Item form:
 
@@ -54,7 +54,7 @@ That takes care of creating the partial view. Now, reference it from the main To
 </div>
 ```
 
-### Add an action
+## Add an action
 
 When a user clicks Add on the form you just created, their browser will construct a POST request to `/Todo/AddItem` on your application. That won't work right now, because there isn't any action that can handle the `/Todo/AddItem` route. If you try it now, ASP.NET Core will return a `404 Not Found` error.
 
@@ -83,7 +83,9 @@ Notice how the new `AddItem` action accepts a `TodoItem` parameter? This is the 
 
 Model binding looks at the data in a request and tries to intelligently match the incoming fields with properties on the model. In other words, when the user submits this form and their browser POSTs to this action, ASP.NET Core will grab the information from the form and place it in the `newItem` variable.
 
-{% hint style="danger" %} Important - Address Security Concern {% endhint %}
+{% hint style="danger" %}
+Important - Address Security Concern
+{% endhint %}
 
 The `[ValidateAntiForgeryToken]` attribute before the action tells ASP.NET Core that it should look for (and verify) the hidden verification token that was added to the form by the `asp-action` tag helper. This is an important security measure to prevent cross-site request forgery (CSRF) attacks, where your users could be tricked into submitting data from a malicious site. The verification token ensures that your application is actually the one that rendered and submitted the form.
 
@@ -122,7 +124,7 @@ The `AddItemAsync` method will return `true` or `false` depending on whether the
 
 Finally, if everything completed without errors, the action redirects the browser to the `/Todo/Index` route, which refreshes the page and displays the new, updated list of to-do items to the user.
 
-### Add a service method
+## Add a service method
 
 If you're using a code editor that understands C#, you'll see red squiggely lines under `AddItemAsync` because the method doesn't exist yet.
 
@@ -155,7 +157,7 @@ public async Task<bool> AddItemAsync(TodoItem newItem)
 
 The `newItem.Title` property has already been set by ASP.NET Core's model binder, so this method only needs to assign an ID and set the default values for the other properties. Then, the new item is added to the database context. It isn't actually saved until you call `SaveChangesAsync()`. If the save operation was successful, `SaveChangesAsync()` will return 1.
 
-### Try it out
+## Try it out
 
 Run the application and add some items to your to-do list with the form. Since the items are being stored in the database, they'll still be there even after you stop and start the application again.
 

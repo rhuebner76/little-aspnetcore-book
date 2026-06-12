@@ -1,6 +1,8 @@
-## Create a migration
+# Create a migration
 
-{% hint style="info" %} #### Important
+{% hint style="info" %}
+**Important**
+
 To work with the database using the CLI it may be necessary to install or update the `dotnet ef` toolchain may be needed. See documentation reference [.NET Core EF CLI](https://learn.microsoft.com/en-us/ef/core/cli/dotnet) for instructions and details on how to setup the tool.
 {% endhint %}
 
@@ -18,7 +20,7 @@ This creates a new migration called `AddItems` by examining any changes you've m
 
 If you open up the `Data/Migrations` directory, you'll see a few files:
 
-![Multiple migrations](migrations.png)
+![Multiple migrations](../../.gitbook/assets/migrations.png)
 
 The first migration file (with a name like `00_CreateIdentitySchema.cs`) was created and applied for you way back when you ran `dotnet new`. Your new `AddItem` migration is prefixed with a timestamp when you create it.
 
@@ -26,7 +28,7 @@ The first migration file (with a name like `00_CreateIdentitySchema.cs`) was cre
 
 If you open your migration file, you'll see two methods called `Up` and `Down`:
 
-**Data/Migrations/<date>_AddItems.cs**
+**Data/Migrations/\_AddItems.cs**
 
 ```csharp
 protected override void Up(MigrationBuilder migrationBuilder)
@@ -65,7 +67,7 @@ The `Up` method runs when you apply the migration to the database. Since you add
 
 The `Down` method does the opposite: if you need to undo (roll back) the migration, the `Items` table will be dropped.
 
-### Workaround for SQLite limitations
+## Workaround for SQLite limitations
 
 There are some limitations of SQLite that get in the way if you try to run the migration as-is. Until this problem is fixed, use this workaround:
 
@@ -74,7 +76,7 @@ There are some limitations of SQLite that get in the way if you try to run the m
 
 If you use a full-fledged SQL database, like SQL Server or MySQL, this won't be an issue and you won't need to do this (admittedly hackish) workaround.
 
-### Apply the migration
+## Apply the migration
 
 The final step after creating one (or more) migrations is to actually apply them to the database:
 
@@ -84,9 +86,7 @@ dotnet ef database update
 
 This command will cause Entity Framework Core to create the `Items` table in the database.
 
-> If you want to roll back the database, you can provide the name of the *previous* migration:
-> `dotnet ef database update CreateIdentitySchema`
-> This will run the `Down` methods of any migrations newer than the migration you specify.
+> If you want to roll back the database, you can provide the name of the _previous_ migration: `dotnet ef database update CreateIdentitySchema` This will run the `Down` methods of any migrations newer than the migration you specify.
 
 > If you need to completely erase the database and start over, run `dotnet ef database drop` followed by `dotnet ef database update` to re-scaffold the database and bring it up to the current migration.
 

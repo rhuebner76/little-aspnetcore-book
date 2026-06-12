@@ -1,4 +1,7 @@
-## Finish the controller
+# Finish the controller
+
+### Finish the controller
+
 The last step is to finish the controller code. The controller now has a list of to-do items from the service layer, and it needs to put those items into a `TodoViewModel` and bind that model to the view you created earlier:
 
 **Controllers/TodoController.cs**
@@ -26,8 +29,11 @@ using AspNetCoreTodo.Models;
 
 If you're using Visual Studio or Visual Studio Code, the editor will suggest these `using` statements when you put your cursor on a red squiggly line.
 
-## Test it out
-{% hint style="info" %} #### Important
+### Test it out
+
+{% hint style="info" %}
+**Important**
+
 Remember to save all the changes before running!
 {% endhint %}
 

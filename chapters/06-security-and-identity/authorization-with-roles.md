@@ -1,4 +1,4 @@
-## Authorization with roles
+# Authorization with roles
 
 Roles are a common approach to handling authorization and permissions in a web application. For example, it's common to create an Administrator role that gives admin users more permissions or power than normal users.
 
@@ -28,10 +28,9 @@ var app = builder.Build();
 // ... more code
 ```
 
-
 In this project, you'll add a Manage Users page that only administrators can see. If normal users try to access it, they'll see an error.
 
-### Add a Manage Users page
+## Add a Manage Users page
 
 First, create a new controller:
 
@@ -156,12 +155,11 @@ Finally, create a `Views/ManageUsers` folder and a view for the `Index` action:
 
 Start up the application and try to access the `/ManageUsers` route while logged in as a normal user. You'll see this access denied page:
 
-![Access denied error](access-denied.png)
+![Access denied error](../../.gitbook/assets/access-denied.png)
 
 That's because users aren't assigned the Administrator role automatically.
 
-
-### Create a test administrator account
+## Create a test administrator account
 
 For obvious security reasons, it isn't possible for anyone to register a new administrator account themselves. In fact, the Administrator role doesn't even exist in the database yet!
 
@@ -200,7 +198,6 @@ namespace AspNetCoreTodo
 ```
 
 The `InitializeAsync()` method uses an `IServiceProvider` (the collection of services that is set up in the `Startup.ConfigureServices()` method) to get the `RoleManager` and `UserManager` from ASP.NET Core Identity.
-
 
 Add two more methods below the `InitializeAsync()` method. First, the `EnsureRolesAsync()` method:
 
@@ -314,13 +311,13 @@ When you start the application next, the `admin@todo.local` account will be crea
 
 > As an extra challenge, try adding more administration features to this page. For example, you could add a button that gives an administrator the ability to delete a user account.
 
-### Check for authorization in a view
+## Check for authorization in a view
 
 The `[Authorize]` attribute makes it easy to perform an authorization check in a controller or action method, but what if you need to check authorization in a view? For example, it would be nice to display a "Manage users" link in the navigation bar if the logged-in user is an administrator.
 
 You can inject the `UserManager` directly into a view to do these types of authorization checks. To keep your views clean and organized, create a new partial view that will add an item to the navbar in the layout:
 
-**Views/Shared/_AdminActionsPartial.cshtml**
+**Views/Shared/\_AdminActionsPartial.cshtml**
 
 ```html
 @using Microsoft.AspNetCore.Identity
@@ -358,7 +355,7 @@ This partial view first uses the `SignInManager` to quickly determine whether th
 
 To include this partial in the main layout, edit `_Layout.cshtml` and add it in the navbar section:
 
-**Views/Shared/_Layout.cshtml**
+**Views/Shared/\_Layout.cshtml**
 
 ```html
 <div class="navbar-collapse collapse">
@@ -372,5 +369,4 @@ To include this partial in the main layout, edit `_Layout.cshtml` and add it in 
 
 When you log in with an administrator account, you'll now see a new item on the top right:
 
-![Manage Users link](manage-users.png)
-
+![Manage Users link](../../.gitbook/assets/manage-users.png)

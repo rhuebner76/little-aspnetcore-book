@@ -1,4 +1,5 @@
-## Create a view
+# Create a view
+
 Views in ASP.NET Core are built using the Razor templating language, which combines HTML and C# code. (If you've written pages using Handlebars moustaches, ERB in Ruby on Rails, or Thymeleaf in Java, you've already got the basic idea.)
 
 Most view code is just HTML, with the occasional C# statement added in to pull data out of the view model and turn it into text or HTML. The C# statements are prefixed with the `@` symbol.
@@ -50,16 +51,19 @@ At the very top of the file, the `@model` directive tells Razor which model to e
 
 Assuming there are any to-do items in `Model.Items`, the `foreach` statement will loop over each to-do item and render a table row (`<tr>` element) containing the item's name and due date. A checkbox is also rendered that will let the user mark the item as complete.
 
-{% hint style="warning" %} #### Warning
+{% hint style="warning" %}
+**Warning**
+
 Since we marked the `TodoViewModel` class `Items` property as **nullable** the compiler will output `warning CS8602: Dereference of a possibly null reference.` warning that there could be a `RuntimeException` if we do not handle the possiblity that `Items` will be null.
 {% endhint %}
 
-### The layout file
+## The layout file
+
 You might be wondering where the rest of the HTML is: what about the `<body>` tag, or the header and footer of the page? ASP.NET Core uses a layout view that defines the base structure that every other view is rendered inside of. It's stored in `Views/Shared/_Layout.cshtml`.
 
 The default ASP.NET Core template includes Bootstrap and jQuery in this layout file, so you can quickly create a web application. Of course, you can use your own CSS and JavaScript libraries if you'd like.
 
-### Customizing the stylesheet
+## Customizing the stylesheet
 
 The default template also includes a stylesheet with some basic CSS rules. The stylesheet is stored in the `wwwroot/css` directory. Add a few new CSS style rules to the bottom of the `site.css` file:
 

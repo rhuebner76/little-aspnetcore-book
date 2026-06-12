@@ -1,12 +1,14 @@
 # Add external packages
+
 One of the big advantages of using a mature ecosystem like .NET is that the number of third-party packages and plugins is huge. Just like other package systems, you can download and install .NET packages that help with almost any task or problem you can imagine.
 
 NuGet is both the package manager tool and the official package repository (at https://www.nuget.org). You can search for NuGet packages on the web, and install them from your local machine through the terminal (or the GUI, if you're using Visual Studio).
 
 ## Install the Humanizer package
+
 At the end of the last chapter, the to-do application displayed to-do items like this:
 
-![Dates in ISO 8601 format](iso8601.png)
+![Dates in ISO 8601 format](../../.gitbook/assets/iso8601.png)
 
 The due date column is displaying dates in a format that's good for machines (called ISO 8601), but clunky for humans. Wouldn't it be nicer if it simply read "X days from now"?
 
@@ -43,13 +45,15 @@ Then, update the line that writes the `DueAt` property to use Humanizer's `Human
 <td>@item.DueAt.Humanize()</td>
 ```
 
-{% hint style="warning" %} #### Warning
+{% hint style="warning" %}
+**Warning**
+
 `DueAt` is a **nullable** `ValueType`, so what happens here if the value of the property is null?
 {% endhint %}
 
 Now the dates are much more readable:
 
-![Human-readable dates](friendly-dates.png)
+![Human-readable dates](../../.gitbook/assets/friendly-dates.png)
 
 There are packages available on NuGet for everything from parsing XML to machine learning to posting to Twitter. ASP.NET Core itself, under the hood, is nothing more than a collection of NuGet packages that are added to your project.
 
