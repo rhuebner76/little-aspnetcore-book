@@ -28,7 +28,7 @@ namespace AspNetCoreTodo.Models
 
 This class defines what the database will need to store for each to-do item: an ID, a title or name, whether the item is complete, and what the due date is. Each line defines a property of the class:
 
-* The **Id** property is a guid, or a **g**lobally **u**nique **id**entifier. Guids (or GUIDs) are long strings of letters and numbers, like `43ec09f2-7f70-4f4b-9559-65011d5781bb`. Because guids are random and are extremely unlikely to be accidentally duplicated, they are commonly used as unique IDs. You could also use a number (integer) as a database entity ID, but you'd need to configure your database to always increment the number when new rows are added to the database. Guids are generated randomly, so you don't have to worry about auto-incrementing.
+* The **Id** property is a **G**lobally **U**nique **ID**entifier (GUID) or sometimes called **U**niversally **U**nique **ID**entifier (UUID). These identifiers are 128-bit strings of alpha-numeric characters representing a HEX (base-8) digit, like `43ec09f2-7f70-4f4b-9559-65011d5781bb`. Because GUIDs are random and are extremely unlikely to be accidentally duplicated, they are commonly used as identifiers in generated assets or distributed transactions. It is possible to use a number (integer) such as with a database entity ID, but a unique sequence-generator would be beeded to auto-increment the values. GUIDs do not require shared sequence-generators, so you don't have to worry about auto-incrementing when using GUIDs.
 * The **IsDone** property is a boolean (true/false value). By default, it will be `false` for all new items. Later you'll use write code to switch this property to `true` when the user clicks an item's checkbox in the view.
 *   The **Title** property is a non-nullable, string (text value). This will hold the name or description of the to-do item. The `[Required]` attribute tells ASP.NET Core that this string can't be null or empty.
 
@@ -37,7 +37,7 @@ This class defines what the database will need to store for each to-do item: an 
 {% hint style="info" %}
 #### Note - Nullable Reference
 
-Starting with .net6 a \`ReferenceType\` is annotated with a \*\*nullable\*\* or \*\*non-nullable\*\* reference symbol \`?\`. See \[Nullable Reference]\(https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types) for a more detailed explanation. In the model above \*\*Title\*\* is a reference type of string and marked with the \*\*nullable\*\* to denote that it \*\*should\*\* never be null.
+Starting with .net6 a `ReferenceType` is annotated with a **nullable** or **non-nullable** reference symbol `?`. See [Nullable Reference](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/nullable-reference-types) for a more detailed explanation. In the model above **Title** is a reference type of string and marked with the **nullable** to denote that it **should** never be null.
 {% endhint %}
 
 *   The **DueAt** property is a `DateTimeOffset`, which is a C# type that stores a date/time stamp along with a timezone offset from UTC. Storing the date, time, and timezone offset together makes it easy to render dates accurately on systems in different timezones.
@@ -47,7 +47,7 @@ Starting with .net6 a \`ReferenceType\` is annotated with a \*\*nullable\*\* or 
 {% hint style="info" %}
 #### Note - Nullable Value
 
-Notice the \`?\` question mark after the \`DateTimeOffset\` type? That marks the \`ValueType\` of DueAt property as \*\*nullable\*\*, or optional. This is slightly different than the \*\*nullable\*\* annotation for a \`ReferenceType\` used above. If the \`?\` wasn't included, every to-do item would be requred and always have a value (or a default value). The \`Id\` and \`IsDone\` properties aren't marked as nullable, so they are required and will always have a value (or a default value).
+Notice the `?` question mark after the `DateTimeOffset` type? That marks the `ValueType` of DueAt property as **nullable**, or optional. This is slightly different than the **nullable** annotation for a `ReferenceType` used above. If the `?` wasn't included, every to-do item would be requred and always have a value (or a default value). The `Id` and `IsDone` properties aren't marked as nullable, so they are required and will always have a value (or a default value).
 {% endhint %}
 
 Each property is followed by `get; set;`, which is a shorthand way of saying the property is read/write (or, more technically, it has a getter and setter methods).
