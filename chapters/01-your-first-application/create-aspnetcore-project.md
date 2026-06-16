@@ -98,7 +98,11 @@ cd ..
 git init
 ```
 
-> \[!IMPORTANT] Make sure you add a `.gitignore` file before committing that ignores the `bin` and `obj` directories. The Visual Studio template on GitHub's gitignore template repo (https://github.com/github/gitignore) works great.
+{% hint style="info" %}
+**Important**
+
+> Make sure you add a `.gitignore` file before committing that ignores the `bin` and `obj` directories. The Visual Studio template on GitHub's gitignore template repo (https://github.com/github/gitignore) works great.
+{% endhint %}
 
 For a dotnet projects we can generate a `.gitignore` using `dotnet new` in the project root directory:
 
